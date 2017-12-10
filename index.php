@@ -1,5 +1,6 @@
 <?php
 
-echo("works");
+echo("<h1>Christmas dinner planner</h1>");
+include("planner.php");
 
 ?>
