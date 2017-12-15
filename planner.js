@@ -31,27 +31,81 @@ function makeMeat(n){
     return out
 }
 
+function makeNonMeat(n){
+    out = "<select id='nonmeatt"+n+"' name='nonmeatt"+n+"'o>"
+    out += "<option value='' selected></option>"
+    out += "<option value='bread'>Bread thing</option>"
+    out += "</select>"
+    return out
+}
+
 function makeVeg(){
+    join = " &nbsp; "
     out = ""
     out += "<label><input type='checkbox' id='roast-potatoes' name='roast-potatoes'> Roast potatoes</label>"
-    out += " &nbsp; "
+    out += join
     out += "<label><input type='checkbox' id='new-potatoes' name='new-potatoes'> New potatoes</label>"
+    out += join
+    out += "<label><input type='checkbox' id='parsnips' name='parsnips'> Parsnips</label>"
+    out += join
+    out += "<label><input type='checkbox' id='peas' name='peas'> Peas</label>"
+    out += join
+    out += "<label><input type='checkbox' id='broccoli' name='broccoli'> Broccoli</label>"
+    out += join
+    out += "<label><input type='checkbox' id='cauliflower' name='cauliflower'> Cauliflower</label>"
+    out += join
+    out += "<label><input type='checkbox' id='carrots' name='carrots'> Carrots</label>"
+    out += join
+    out += "<label><input type='checkbox' id='leeks' name='leeks'> Leeks</label>"
+    out += join
+    out += "<label><input type='checkbox' id='mushrooms' name='mushrooms'> Mushrooms</label>"
+    out += join
+    out += "<label><input type='checkbox' id='brussels' name='brussels'> Brussels sprouts</label>"
+    return out
+}
+
+function makeOther(){
+    join = " &nbsp; "
+    out = ""
+    out += "<label><input type='checkbox' id='gravy' name='gravy'> Gravy</label>"
+    return out
+}
+
+function makeMeatTicks(){
+    join = " &nbsp; "
+    out = ""
+    out += "<label><input type='checkbox' id='pigs' name='pigs'> Pigs in blankets</label>"
     return out
 }
 
 
 meatN = 0
+nonmeatN = 0
 
 
 function addMeat(){
     meatN += 1
     document.getElementById("meatinputs"+meatN).innerHTML += makeMeat(meatN) + "<br />"+"<span id='meatinputs"+(meatN+1)+"'></span>"
+    return false
+}
+function addNonMeat(){
+    nonmeatN += 1
+    document.getElementById("nonmeatinputs"+meatN).innerHTML += makeNonMeat(nonmeatN) + "<br />"+"<span id='nonmeatinputs"+(meatN+1)+"'></span>"
     return False
 }
 function showVeg(){
     document.getElementById("veginputs").innerHTML = makeVeg()
 }
+function showOther(){
+    document.getElementById("otherinputs").innerHTML = makeOther()
+}
+function showMeat(){
+    document.getElementById("meatticks").innerHTML = makeMeatTicks()
+}
 
-showVeg()
+
 addMeat()
 
+showVeg()
+showOther()
+showMeat()
