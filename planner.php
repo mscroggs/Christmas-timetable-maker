@@ -92,8 +92,9 @@ if(isset($_POST['make'])){
             _add($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
         }
         if($t=="ham"){
-            //_add($eat,20,"Take ".$name."out and rest it");
-            //_add($eat,20,"Take ".$name."out and rest it");
+            _add($eat,90 + 20/450 * $w,"Put ".$name." on to boil");
+            _add($eat,90,"Turn ".$name." off and leave in water to cool");
+           _add($eat,30,"Put ".$name." in oven to warm");
         }
         if($t=="lamb"){
             _add($eat, 30 + 30/450 * $w, "Put ".$name." in the oven at ".temp(230));
