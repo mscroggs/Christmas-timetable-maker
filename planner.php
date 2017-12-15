@@ -28,6 +28,12 @@ function custom_join($a){
     return $out;
 }
 
+function add_essential($eat, $m, $n){
+    _add($eat, $m, "<b>".$n."</b>");
+}
+function add_variable($eat, $m, $n){
+    _add($eat, $m, $n);
+}
 function _add($eat, $m, $n){
     global $times;
     $a = format_time_mins_before($eat, $m);
@@ -63,7 +69,7 @@ if(isset($_POST['make'])){
 
     $eat = $_POST['eat-time'];
 
-    _add($eat,0,"Eat Christmas dinner");
+    add_essential($eat,0,"Eat Christmas dinner");
 
     for($i=1;isset($_POST['meatt'.$i]);$i++){
         $t = $_POST['meatt'.$i];
@@ -77,85 +83,85 @@ if(isset($_POST['make'])){
         if($u=="oz"){$w *= 28.35;}
         if($u=="kg"){$w *= 1000;}
         if($t=="pork"){
-            _add($eat,20 + 35/450 * $w,"Turn ".$name." down to ".temp(190));
-            _add($eat,20 + 20 + 35/450 * $w,"Put ".$name." in oven at ".temp(245));
-            _add($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
+            add_essential($eat,20 + 35/450 * $w,"Turn ".$name." down to ".temp(190));
+            add_essential($eat,20 + 20 + 35/450 * $w,"Put ".$name." in oven at ".temp(245));
+            add_variable($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
         }
         if($t=="pork2"){
-            _add($eat,20 + 45/450 * $w,"Turn ".$name." down to ".temp(180));
-            _add($eat,20 + 20 + 45/450 * $w,"Put ".$name." in oven at ".temp(245));
-            _add($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
+            add_essential($eat,20 + 45/450 * $w,"Turn ".$name." down to ".temp(180));
+            add_essential($eat,20 + 20 + 45/450 * $w,"Put ".$name." in oven at ".temp(245));
+            add_variable($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
         }
         if($t=="chicken"){
-            _add($eat,20 + 20 + 20/450 * $w,"Stuff the ".$name);
-            _add($eat,20 + 20/450 * $w,"Put ".$name." in oven at ".temp(190));
-            _add($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
+            add_variable($eat,20 + 20 + 20/450 * $w,"Stuff the ".$name);
+            add_essential($eat,20 + 20/450 * $w,"Put ".$name." in oven at ".temp(190));
+            add_variable($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
         }
         if($t=="ham"){
-            _add($eat,90 + 20/450 * $w,"Put ".$name." on to boil");
-            _add($eat,90,"Turn ".$name." off and leave in water to cool");
-           _add($eat,30,"Put ".$name." in oven to warm");
+            add_essential($eat,90 + 20/450 * $w,"Put ".$name." on to boil");
+            add_essential($eat,90,"Turn ".$name." off and leave in water to cool");
+           add_essential($eat,30,"Put ".$name." in oven to warm");
         }
         if($t=="lamb"){
-            _add($eat, 30 + 30/450 * $w, "Put ".$name." in the oven at ".temp(230));
-            _add($eat, 30/450 * $w, "Put ".$name." in the oven at ".temp(180));
+            add_essential($eat, 30 + 30/450 * $w, "Put ".$name." in the oven at ".temp(230));
+            add_essential($eat, 30/450 * $w, "Turn ".$name." down to ".temp(180));
         }
         if($t=="beef"){
             if($r=="rare"){$cook = 15/450 * $w;}
             if($r=="medium"){$cook = 30/450 * $w;}
             if($r=="well-done"){$cook = 45/450 * $w;}
-            _add($eat, 20 + $cook, "Put ".$name." in the oven at ".temp(230));
-            _add($eat, $cook, "Turn ".$name." down to ".temp(190));
+            add_essential($eat, 20 + $cook, "Put ".$name." in the oven at ".temp(230));
+            add_essential($eat, $cook, "Turn ".$name." down to ".temp(190));
         }
     }
 
     if(on("pigs")){
-        _add($eat, 90, "Wrap sausages in bacon");
-        _add($eat, 60, "Put pigs in blankets in the oven");
+        add_variable($eat, 90, "Wrap sausages in bacon");
+        add_essential($eat, 60, "Put pigs in blankets in the oven");
     }
 
 
     for($i=1;isset($_POST['nonmeatt'.$i]);$i++){
         $t = $_POST['nonmeatt'.$i];
         if($t=="bread"){
-            _add($eat,60,"Put bread thing in oven");
+            add_essential($eat,60,"Put bread thing in oven");
         }
     }
 
     if(on("roast-potatoes")){
-        _add($eat, 180, "Peel and chop roast potatoes");
-        _add($eat, 150, "Put roast potatoes on to boil");
-        _add($eat, 120, "Put roast potatoes in oven");
+        add_variable($eat, 180, "Peel and chop roast potatoes");
+        add_variable($eat, 150, "Put roast potatoes on to boil");
+        add_essential($eat, 120, "Put roast potatoes in oven");
     }
     if(on("new-potatoes")){
-        _add($eat, 25, "Put new potatoes on to boil");
+        add_essential($eat, 25, "Put new potatoes on to boil");
     }
     if(on("parsnips")){
-        _add($eat, 80, "Put parsnips on to boil");
-        _add($eat, 60, "Put new potatoes on to boil");
+        add_variable($eat, 80, "Put parsnips on to boil");
+        add_essential($eat, 60, "Put parsnips in oven");
     }
     $fry = Array();
     if(on("carrots")){$fry[] = "carrots";}
     if(on("leeks")){$fry[] = "leeks";}
     if(on("mushrooms")){$fry[] = "mushrooms";}
     if(count($fry)>0){
-        _add($eat, 30, "Put ".custom_join($fry)." on to fry in butter");
+        add_essential($eat, 30, "Put ".custom_join($fry)." on to fry in butter");
     }
     if(on("peas")){
-        _add($eat, 20, "Put peas on to boil");
+        add_essential($eat, 20, "Put peas on to boil");
     }
     if(on("broccoli")){
-        _add($eat, 20, "Put broccoli on to boil");
+        add_essential($eat, 20, "Put broccoli on to boil");
     }
     if(on("cauliflower")){
-        _add($eat, 20, "Put cauliflower on to boil");
+        add_essential($eat, 20, "Put cauliflower on to boil");
     }
     if(on("brussels")){
-        _add($eat, 20, "Put brussels sprouts on to boil");
+        add_essential($eat, 20, "Put brussels sprouts on to boil");
     }
 
     if(on("gravy")){
-        _add($eat, 30, "Make gravy");
+        add_essential($eat, 30, "Make gravy");
     }
 
     $k = array_keys($times);
