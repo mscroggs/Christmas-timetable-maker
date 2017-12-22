@@ -90,7 +90,7 @@ function addMeat(){
 }
 function addNonMeat(){
     nonmeatN += 1
-    document.getElementById("nonmeatinputs"+nonmeatN).innerHTML += makeNonMeat(nonmeatN) + "<br />"+"<span id='nonmeatinputs"+(meatN+1)+"'></span>"
+    document.getElementById("nonmeatinputs"+nonmeatN).innerHTML += makeNonMeat(nonmeatN) + "<br />"+"<span id='nonmeatinputs"+(nonmeatN+1)+"'></span>"
     return False
 }
 function showVeg(){
