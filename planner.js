@@ -42,39 +42,39 @@ function makeNonMeat(n){
 function makeVeg(){
     join = " &nbsp; "
     out = ""
-    out += "<label><input type='checkbox' id='roast-potatoes' name='roast-potatoes'> Roast potatoes</label>"
+    out += "<label><input type='checkbox' id='roast-potatoes' name='roast-potatoes'>Roast potatoes</label>"
     out += join
-    out += "<label><input type='checkbox' id='new-potatoes' name='new-potatoes'> New potatoes</label>"
+    out += "<label><input type='checkbox' id='new-potatoes' name='new-potatoes'>New potatoes</label>"
     out += join
-    out += "<label><input type='checkbox' id='parsnips' name='parsnips'> Parsnips</label>"
+    out += "<label><input type='checkbox' id='parsnips' name='parsnips'>Parsnips</label>"
     out += join
-    out += "<label><input type='checkbox' id='peas' name='peas'> Peas</label>"
+    out += "<label><input type='checkbox' id='peas' name='peas'>Peas</label>"
     out += join
-    out += "<label><input type='checkbox' id='broccoli' name='broccoli'> Broccoli</label>"
+    out += "<label><input type='checkbox' id='broccoli' name='broccoli'>Broccoli</label>"
     out += join
-    out += "<label><input type='checkbox' id='cauliflower' name='cauliflower'> Cauliflower</label>"
+    out += "<label><input type='checkbox' id='cauliflower' name='cauliflower'>Cauliflower</label>"
     out += join
-    out += "<label><input type='checkbox' id='carrots' name='carrots'> Carrots</label>"
+    out += "<label><input type='checkbox' id='carrots' name='carrots'>Carrots</label>"
     out += join
-    out += "<label><input type='checkbox' id='leeks' name='leeks'> Leeks</label>"
+    out += "<label><input type='checkbox' id='leeks' name='leeks'>Leeks</label>"
     out += join
-    out += "<label><input type='checkbox' id='mushrooms' name='mushrooms'> Mushrooms</label>"
+    out += "<label><input type='checkbox' id='mushrooms' name='mushrooms'>Mushrooms</label>"
     out += join
-    out += "<label><input type='checkbox' id='brussels' name='brussels'> Brussels sprouts</label>"
+    out += "<label><input type='checkbox' id='brussels' name='brussels'>Brussels sprouts</label>"
     return out
 }
 
 function makeOther(){
     join = " &nbsp; "
     out = ""
-    out += "<label><input type='checkbox' id='gravy' name='gravy'> Gravy</label>"
+    out += "<label><input type='checkbox' id='gravy' name='gravy'>Gravy</label>"
     return out
 }
 
 function makeMeatTicks(){
     join = " &nbsp; "
     out = ""
-    out += "<label><input type='checkbox' id='pigs' name='pigs'> Pigs in blankets</label>"
+    out += "<label><input type='checkbox' id='pigs' name='pigs'>Pigs in blankets</label>"
     return out
 }
 
