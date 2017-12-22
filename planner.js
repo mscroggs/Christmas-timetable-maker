@@ -9,7 +9,7 @@ function rarity(v, id){
 function makeMeat(n){
     out = "<select id='meatt"+n+"' name='meatt"+n+"' onchange=\"rarity(this.value, 'meatr"+n+"')\">"
     out += "<option value='' selected></option>"
-//    out += "<option value='turkey'>Turkey</option>"
+    out += "<option value='turkey'>Turkey</option>"
     out += "<option value='chicken'>Chicken</option>"
     out += "<option value='pork'>Pork (leg or loin)</option>"
     out += "<option value='pork2'>Pork (other)</option>"

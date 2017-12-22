@@ -97,14 +97,21 @@ if(isset($_POST['make'])){
             add_essential($eat,20 + 20/450 * $w,"Put ".$name." in oven at ".temp(190));
             add_variable($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
         }
+        if($t=="turkey"){
+            $cook = $w/1000 * 20 + 70;
+            if($w>=4000){$cook += 20;}
+            add_variable($eat,$cook+40,"Stuff the ".$name);
+            add_essential($eat,$cook+20,"Put ".$name." in oven at ".temp(190));
+            add_variable($eat,20,"Check the ".$name.". If cooked, take it out and rest it");
+        }
         if($t=="ham"){
             add_essential($eat,90 + 20/450 * $w,"Put ".$name." on to boil");
             add_essential($eat,90,"Turn ".$name." off and leave in water to cool");
-           add_essential($eat,30,"Put ".$name." in oven to warm");
+            add_essential($eat,30,"Put ".$name." in oven to warm");
         }
         if($t=="lamb"){
             add_essential($eat, 30 + 30/450 * $w, "Put ".$name." in the oven at ".temp(230));
-            add_essential($eat, 30/450 * $w, "Turn ".$name." down to ".temp(180));
+            add_essential($eat, 30/450 * $w, "Turn ".$name." down to ".temp(190));
         }
         if($t=="beef"){
             if($r=="rare"){$cook = 15/450 * $w;}
