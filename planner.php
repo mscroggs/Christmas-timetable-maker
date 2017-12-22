@@ -5,6 +5,10 @@ table.xmas-timetable td,
 table.xmas-timetable tr {border:none;vertical-align:top;border-collapse:collapse}
 table.xmas-timetable td {border-bottom:2px solid gray;padding:10px}
 
+label {
+  display: inline-block;
+}
+
 </style>
 
 <?php
