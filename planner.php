@@ -184,22 +184,22 @@ if(isset($_POST['make'])){
 
     echo("<form method='post'>");
 
-    echo("<h2>Meat</h2>");
+    echo("<$h2>Meat</$h2>");
     echo("<span id='meatinputs1'></span>");
     echo("<button onclick='return addMeat()' type='button'>+</button>");
     echo("<br /><span id='meatticks'></span>");
 
-    echo("<h2>Vegetarian</h2>");
+    echo("<$h2>Vegetarian</$h2>");
     echo("<span id='nonmeatinputs1'></span>");
     echo("<button onclick='return addNonMeat()' type='button'>+</button>");
 
-    echo("<h2>Vegetables</h2>");
+    echo("<$h2>Vegetables</$h2>");
     echo("<span id='veginputs'></span>");
 
-    echo("<h2>Other</h2>");
+    echo("<$h2>Other</$h2>");
     echo("<span id='otherinputs'></span>");
 
-    echo("<h2>Options</h2>");
+    echo("<$h2>Options</$h2>");
     echo("Eating time:<input type='time' name='eat-time'>");
     echo("<br /><br /><input name='make' value='Make timetable' type='submit'>");
     echo("</form>");
