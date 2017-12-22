@@ -2,6 +2,7 @@
 
 table.xmas-timetable,
 table.xmas-timetable td,
+table.xmas-timetable thead,
 table.xmas-timetable tr {border:none;vertical-align:top;border-collapse:collapse}
 table.xmas-timetable td {border-bottom:2px solid gray;padding:10px}
 
@@ -183,6 +184,7 @@ if(isset($_POST['make'])){
         echo("<tr><td>".$i."</td><td>".join("<br />",$times[$i])."</td></tr>");
 
     }
+    echo("</table>");
 
 } else {
 
