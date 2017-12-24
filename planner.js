@@ -24,8 +24,8 @@ function makeMeat(n){
     out += "</select>"
     out += "&nbsp;Weight:<input id='meatw"+n+"' name='meatw"+n+"' size=1>"
     out += "<select id='meatu"+n+"' name='meatu"+n+"'>"
-    out += "<option value='g' selected>g</option>"
-    out += "<option value='kg'>kg</option>"
+    out += "<option value='kg' selected>kg</option>"
+    out += "<option value='g'>g</option>"
     out += "<option value='oz'>oz</option>"
     out += "</select>"
     return out
