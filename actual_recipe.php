@@ -5,12 +5,16 @@ include("recipe_intro.php");
 function g($n){
     return $n[1]."g";
 }
+function oz($n){
+    return ($n[1]*28)."g";
+}
 function C($n){
     return $n[1]."&deg;C";
 }
 
 function add_units($txt){
     $txt = preg_replace_callback("/<g>([0-9]+)<\/g>/","g",$txt);
+    $txt = preg_replace_callback("/<oz>([0-9]+)<\/oz>/","oz",$txt);
     $txt = preg_replace_callback("/<C>([0-9]+)<\/C>/","C",$txt);
     return $txt;
 }
