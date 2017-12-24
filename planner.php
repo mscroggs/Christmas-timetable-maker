@@ -87,6 +87,14 @@ function temp($n){
             else {$mark=0;}
             return "gas mark ".$mark;
         }
+        if($_POST['oven-type'] == "desc"){
+            if($n>=240){return "very hot";}
+            else if($n>=220){return "hot";}
+            else if($n>=190){return "moderately hot";}
+            else if($n>=170){return "moderate";}
+            else if($n>=140){return "slow";}
+            else {return "very slow";}
+        }
     }
     return $n."&deg;C";
 }
@@ -242,6 +250,7 @@ if(isset($_POST['make'])){
     echo("<option value='Cfan' selected>&deg;C fan oven</option>");
     echo("<option value='F' selected>&deg;F</option>");
     echo("<option value='gas' selected>gas oven</option>");
+    echo("<option value='desc' selected>a descriptive oven</option>");
     echo("</select></label>");
     echo("<br /><br /><input name='make' value='Make timetable' type='submit'>");
     echo("</form>");
