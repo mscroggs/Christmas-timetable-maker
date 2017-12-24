@@ -168,7 +168,7 @@ if(isset($_POST['make'])){
     for($i=1;isset($_POST['nonmeatt'.$i]);$i++){
         $t = $_POST['nonmeatt'.$i];
         if($t=="bread"){
-            add_essential($eat,60,"Put bread thing in oven");
+            add_essential($eat,60,"Put koulibiaca in oven");
         }
     }
 
