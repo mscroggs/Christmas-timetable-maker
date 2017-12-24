@@ -247,10 +247,10 @@ if(isset($_POST['make'])){
     echo(" &nbsp; ");
     echo("<label>Oven type:<select name='oven-type'>");
     echo("<option value='C' selected>&deg;C</option>");
-    echo("<option value='Cfan' selected>&deg;C fan oven</option>");
-    echo("<option value='F' selected>&deg;F</option>");
-    echo("<option value='gas' selected>gas oven</option>");
-    echo("<option value='desc' selected>a descriptive oven</option>");
+    echo("<option value='Cfan'>&deg;C fan oven</option>");
+    echo("<option value='F'>&deg;F</option>");
+    echo("<option value='gas'>gas oven</option>");
+    echo("<option value='desc'>a descriptive oven</option>");
     echo("</select></label>");
     echo("<br /><br /><input name='make' value='Make timetable' type='submit'>");
     echo("</form>");
