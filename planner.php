@@ -64,6 +64,30 @@ function format_time_mins_before($t,$m){
 }
 
 function temp($n){
+    if(isset($_POST['oven-type'])){
+        if($_POST['oven-type'] == "C"){
+            return $n."&deg;C";
+        }
+        if($_POST['oven-type'] == "Cfan"){
+            return ($n-20)."&deg;C";
+        }
+        if($_POST['oven-type'] == "F"){
+            return floor($n*9/5+32)."&deg;F";
+        }
+        if($_POST['oven-type'] == "gas"){
+            if($n>=240){$mark=9;}
+            else if($n>=230){$mark=8;}
+            else if($n>=220){$mark=7;}
+            else if($n>=200){$mark=6;}
+            else if($n>=190){$mark=5;}
+            else if($n>=180){$mark=4;}
+            else if($n>=170){$mark=3;}
+            else if($n>=150){$mark=2;}
+            else if($n>=140){$mark=1;}
+            else {$mark=0;}
+            return "gas mark ".$mark;
+        }
+    }
     return $n."&deg;C";
 }
 
@@ -143,6 +167,7 @@ if(isset($_POST['make'])){
     if(on("roast-potatoes")){
         add_variable($eat, 180, "Peel and chop roast potatoes");
         add_variable($eat, 150, "Put roast potatoes on to boil");
+        add_variable($eat, 135, "Once the roast potatoes are almost completely cooked through, drain them");
         add_essential($eat, 120, "Put roast potatoes in oven");
     }
     if(on("new-potatoes")){
@@ -160,16 +185,20 @@ if(isset($_POST['make'])){
         add_essential($eat, 30, "Put ".custom_join($fry)." on to fry in butter");
     }
     if(on("peas")){
-        add_essential($eat, 20, "Put peas on to boil");
+        add_essential($eat, 20, "Put water for peas on to boil");
+        add_essential($eat, 8, "Put peas in their boiling water");
     }
     if(on("broccoli")){
-        add_essential($eat, 20, "Put broccoli on to boil");
+        add_essential($eat, 20, "Put water for broccoli on to boil");
+        add_essential($eat, 8, "Put broccoli in their boiling water");
     }
     if(on("cauliflower")){
-        add_essential($eat, 20, "Put cauliflower on to boil");
+        add_essential($eat, 20, "Put water for cauliflower on to boil");
+        add_essential($eat, 8, "Put cauliflower in their boiling water");
     }
     if(on("brussels")){
-        add_essential($eat, 20, "Put brussels sprouts on to boil");
+        add_essential($eat, 15, "Put water for brussels sprouts on to boil");
+        add_essential($eat, 5, "Put brussels sprouts in their boiling water");
     }
 
     if(on("gravy")){
@@ -207,6 +236,13 @@ if(isset($_POST['make'])){
 
     echo("<$h2>Options</$h2>");
     echo("Eating time:<input type='time' name='eat-time'>");
+    echo(" &nbsp; ");
+    echo("Oven type:<select name='oven-type'>");
+    echo("<option value='C' selected>&deg;C</option>");
+    echo("<option value='Cfan' selected>&deg;C fan oven</option>");
+    echo("<option value='F' selected>&deg;F</option>");
+    echo("<option value='gas' selected>gas oven</option>");
+    echo("</select>");
     echo("<br /><br /><input name='make' value='Make timetable' type='submit'>");
     echo("</form>");
 
