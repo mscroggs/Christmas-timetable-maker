@@ -2,6 +2,19 @@
 
 include("recipe_intro.php");
 
+function g($n){
+    return $n[1]."g";
+}
+function C($n){
+    return $n[1]."&deg;C";
+}
+
+function add_units($txt){
+    $txt = preg_replace_callback("/<g>([0-9]+)<\/g>/","g",$txt);
+    $txt = preg_replace_callback("/<C>([0-9]+)<\/C>/","C",$txt);
+    return $txt;
+}
+
 function list_markup($ls,$tag="ul"){
     global $h1;
     global $h2;
@@ -14,6 +27,7 @@ function list_markup($ls,$tag="ul"){
 function markup_recipe($recipe){
     global $h1;
     global $h2;
+    $recipe = add_units($recipe);
     $out = "";
     $img = between_tags($recipe,"img");
     if($img!=""){
