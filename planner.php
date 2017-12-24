@@ -72,7 +72,7 @@ function temp($n){
             return ($n-20)."&deg;C";
         }
         if($_POST['oven-type'] == "F"){
-            return floor($n*9/5+32)."&deg;F";
+            return (floor(($n*9/5+32)/5)*5)."&deg;F";
         }
         if($_POST['oven-type'] == "gas"){
             if($n>=240){$mark=9;}
@@ -235,14 +235,14 @@ if(isset($_POST['make'])){
     echo("<span id='otherinputs'></span>");
 
     echo("<$h2>Options</$h2>");
-    echo("Eating time:<input type='time' name='eat-time'>");
+    echo("<label>Eating time:<input type='time' name='eat-time'></label>");
     echo(" &nbsp; ");
-    echo("Oven type:<select name='oven-type'>");
+    echo("<label>Oven type:<select name='oven-type'>");
     echo("<option value='C' selected>&deg;C</option>");
     echo("<option value='Cfan' selected>&deg;C fan oven</option>");
     echo("<option value='F' selected>&deg;F</option>");
     echo("<option value='gas' selected>gas oven</option>");
-    echo("</select>");
+    echo("</select></label>");
     echo("<br /><br /><input name='make' value='Make timetable' type='submit'>");
     echo("</form>");
 
