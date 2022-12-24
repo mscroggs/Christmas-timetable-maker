@@ -53,14 +53,17 @@ function pad2($n){
 }
 
 function format_time($t){
-    $out = pad2(floor($t));
+    $out = pad2(intdiv($t, 60));
     $out .= ":";
-    $out .= pad2(floor(.5+60*($t-floor($t))));
+    $out .= pad2($t%60);
     return $out;
 }
 
 function format_time_mins_before($t,$m){
-    return format_time($t-$m/60);
+    $hr = explode(":", $t)[0];
+    $min = explode(":", $t)[1];
+    $t = $hr*60 + $min;
+    return format_time($t-$m);
 }
 
 function temp($n){
