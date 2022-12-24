@@ -233,6 +233,22 @@ if(isset($_POST['make'])){
             add_essential_gantt($eat,60,0,"Put koulibiaca in oven");
             $ganttn++;
         }
+        else if($t=="butternut"){
+            add_variable($eat,80,"Stuff squash");
+            add_essential($eat,65,"Put squash in to roast");
+            add_essential($eat,35,"Add sauce to squash and continue to roast");
+            add_essential($eat,25,"Add glaze to squash and continue to roast");
+            add_essential($eat,15,"Add stuffing and seeds to squash and continue to roast");
+            add_variable_gantt($eat,100,85,65,"Stuff squash");
+            add_essential_gantt($eat,65,36,"Roast squash");
+            add_essential_gantt($eat,36,34,"Add sauce");
+            add_essential_gantt($eat,34,26,"Roast squash");
+            add_essential_gantt($eat,26,24,"Glaze");
+            add_essential_gantt($eat,24,16,"Roast squash");
+            add_essential_gantt($eat,16,14,"Add stuffing and seeds");
+            add_essential_gantt($eat,14,0,"Roast squash");
+            $ganttn++;
+        }
     }
 
     if(on("roast-potatoes")){
