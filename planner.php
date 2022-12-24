@@ -332,7 +332,7 @@ if(isset($_POST['make'])){
 
         function gx($x){
             global $earliest;
-            return 6 * ($x - $earliest);
+            return 30+6 * ($x - $earliest);
         }
         function gy($y){
             return 60 + 58 * $y;
@@ -348,7 +348,7 @@ if(isset($_POST['make'])){
         }
 
         $eatn = mins_before($eat, 0);
-        echo("<div class='xmas-gantt' style='position:relative;background:white;left:".((700-gx($eatn)+gx($earliest))/2)."px;height:".(gy($ganttn)+30)."px;width:".(gx($eatn)-gx($earliest))."px'>");
+        echo("<div class='xmas-gantt' style='position:relative;background:white;left:".((700-gx($eatn)+gx($earliest))/2-20)."px;height:".(gy($ganttn)+80)."px;width:".(70+gx($eatn)-gx($earliest))."px'>");
         for($t=$earliest - $earliest%10;$t<$eatn;$t+=10){
             draw_line($t);
         }
