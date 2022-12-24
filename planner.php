@@ -82,8 +82,13 @@ function format_time_mins_before($t,$m){
 }
 
 function mins_before($t,$m){
-    $hr = explode(":", $t)[0];
-    $min = explode(":", $t)[1];
+    if(count(explode(":",$t))!=2){
+        $hr = 13;
+        $min = 0;
+    } else {
+        $hr = explode(":", $t)[0];
+        $min = explode(":", $t)[1];
+    }
     return $hr*60 + $min - $m;
 }
 
@@ -134,7 +139,7 @@ if(isset($_POST['make'])){
 
     add_essential($eat,0,"Eat Christmas dinner");
 
-    for($i=1;isset($_POST['meatt'.$i]);$i++){
+    for($i=1;isset($_POST['meatt'.$i]);$i++){if($_POST['meatt'.$i]!=""){
         $t = $_POST['meatt'.$i];
         $w = $_POST['meatw'.$i];
         $u = $_POST['meatu'.$i];
@@ -209,7 +214,7 @@ if(isset($_POST['make'])){
             add_essential_gantt($eat,$cook, 0, "Roast ".$name." at ".temp(190));
             $ganttn++;
         }
-    }
+    }}
 
     if(on("pigs")){
         add_variable($eat, 90, "Wrap sausages in bacon");
