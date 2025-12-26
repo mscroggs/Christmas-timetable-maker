@@ -22,7 +22,7 @@ function makeMeat(n){
     out += "<option value='medium' selected>medium</option>"
     out += "<option value='well-done'>well done</option>"
     out += "</select>"
-    out += "&nbsp;Weight:<input id='meatw"+n+"' name='meatw"+n+"' size=1>"
+    out += "&nbsp;Weight:<input id='meatw"+n+"' name='meatw"+n+"' size=4>"
     out += "<select id='meatu"+n+"' name='meatu"+n+"'>"
     out += "<option value='kg' selected>kg</option>"
     out += "<option value='g'>g</option>"
