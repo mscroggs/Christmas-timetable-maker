@@ -34,7 +34,9 @@ function makeMeat(n){
 function show_non_info(n){
     v = document.getElementById("nonmeatt"+n).value
     if(v == "bread"){
-        document.getElementById("nonmeatinfo"+n).innerHTML = "<a href='http://oxmas.eu/recipe.php?what=koulibiaca' target='new'>click here for recipe</a>"
+        document.getElementById("nonmeatinfo"+n).innerHTML = "<a href='http://oxmas.xyz/recipe.php?what=koulibiaca' target='new'>click here for recipe</a>"
+    } else {
+        document.getElementById("nonmeatinfo"+n).innerHTML = ""
     }
 }
 
@@ -42,6 +44,7 @@ function makeNonMeat(n){
     out = "<select id='nonmeatt"+n+"' name='nonmeatt"+n+"' onchange='show_non_info("+n+")'>"
     out += "<option value='' selected></option>"
     out += "<option value='bread'>Christmas Koulibiaca</option>"
+    out += "<option value='butternut'>Stuffed hasselback squash</option>"
     out += "</select><span id='nonmeatinfo"+n+"' style='margin-left:5px'></span>"
     return out
 }
