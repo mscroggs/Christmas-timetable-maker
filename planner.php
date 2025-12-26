@@ -6,6 +6,24 @@ table.xmas-timetable thead,
 table.xmas-timetable tr {border:none;vertical-align:top;border-collapse:collapse}
 table.xmas-timetable td {border-bottom:2px solid gray;padding:10px}
 
+#xmas-timetable-area {
+    margin-top:50px;
+}
+
+table.xmas-input-table,
+table.xmas-input-table tr,
+table.xmas-input-table td {
+    border: 0px;
+}
+table.xmas-input-table tr td {
+    text-align:left;
+    width:50%;
+    padding:4px;
+}
+table.xmas-input-table tr td:first-of-type {
+    text-align:right;
+}
+
 label {
   display: inline-block;
 }
@@ -13,120 +31,6 @@ label {
 </style>
 
 <?php
-
-$times = Array();
-
-function add_essential($eat, $m, $n){
-    _add($eat, $m, "<b>".$n."</b>");
-}
-function add_variable($eat, $m, $n){
-    _add($eat, $m, $n);
-}
-function _add($eat, $m, $n){
-    global $times;
-    $a = format_time_mins_before($eat, $m);
-    if(!isset($times[$a])){$times[$a]=Array();}
-    $times[$a][] = $n;
-}
-
-$blocks = Array();
-$ganttn = 0;
-
-function add_essential_gantt($eat, $start, $end, $n){
-    _add_gantt($eat, $start, $end, $end, $n);
-}
-function add_variable_gantt($eat, $start, $end, $end2, $n){
-    _add_gantt($eat, $start, $end, $end2, $n);
-}
-function _add_gantt($eat, $start, $end, $end2, $n){
-    global $blocks;
-    global $ganttn;
-    $a = mins_before($eat, $start);
-    $b = mins_before($eat, $end);
-    $c = mins_before($eat, $end2);
-    $blocks[] = Array($a, $b, $c, $n, $ganttn);
-}
-
-function on($thing){
-     return (isset($_POST[$thing]) && $_POST[$thing]=="on");
-}
-
-function custom_join($a){
-    $out = "";
-    for($i=0;$i<count($a);$i++){
-        $out.=$a[$i];
-        if($i<count($a)-2){
-            $out.=", ";
-        } else if($i<count($a)-1){
-            $out.=" and ";
-        }
-    }
-    return $out;
-}
-
-function pad2($n){
-    $n = "".$n;
-    while(strlen($n)<2){$n="0".$n;}
-    return $n;
-}
-
-function format_time($t){
-    $out = pad2(intdiv($t, 60));
-    $out .= ":";
-    $out .= pad2($t%60);
-    return $out;
-}
-
-function format_time_mins_before($t,$m){
-    return format_time(mins_before($t, $m));
-}
-
-function mins_before($t,$m){
-    if(count(explode(":",$t))!=2){
-        $hr = 13;
-        $min = 0;
-    } else {
-        $hr = explode(":", $t)[0];
-        $min = explode(":", $t)[1];
-    }
-    return $hr*60 + $min - $m;
-}
-
-function temp($n){
-    if(isset($_POST['oven-type'])){
-        if($_POST['oven-type'] == "C"){
-            return $n."&deg;C";
-        }
-        if($_POST['oven-type'] == "Cfan"){
-            return ($n-20)."&deg;C";
-        }
-        if($_POST['oven-type'] == "F"){
-            return (floor(($n*9/5+32)/5)*5)."&deg;F";
-        }
-        if($_POST['oven-type'] == "gas"){
-            if($n>=240){$mark=9;}
-            else if($n>=230){$mark=8;}
-            else if($n>=220){$mark=7;}
-            else if($n>=200){$mark=6;}
-            else if($n>=190){$mark=5;}
-            else if($n>=180){$mark=4;}
-            else if($n>=170){$mark=3;}
-            else if($n>=150){$mark=2;}
-            else if($n>=140){$mark=1;}
-            else {$mark=0;}
-            return "gas mark ".$mark;
-        }
-        if($_POST['oven-type'] == "desc"){
-            if($n>=240){return "very hot";}
-            else if($n>=220){return "hot";}
-            else if($n>=190){return "moderately hot";}
-            else if($n>=170){return "moderate";}
-            else if($n>=140){return "slow";}
-            else {return "very slow";}
-        }
-    }
-    return $n."&deg;C";
-}
 
 if(isset($_POST['make'])){
 
@@ -369,43 +273,44 @@ if(isset($_POST['make'])){
     } else {
         echo("Unknown format");
     }
-} else {
-
-    echo("<form method='post'>");
-
-    echo("<$h2>Meat</$h2>");
-    echo("<span id='meatinputs1'></span>");
-    echo("<button onclick='return addMeat()' type='button'>+</button>");
-    echo("<br /><span id='meatticks'></span>");
-
-    echo("<$h2>Vegetarian</$h2>");
-    echo("<span id='nonmeatinputs1'></span>");
-    echo("<button onclick='return addNonMeat()' type='button'>+</button>");
-
-    echo("<$h2>Vegetables</$h2>");
-    echo("<span id='veginputs'></span>");
-
-    echo("<$h2>Other</$h2>");
-    echo("<span id='otherinputs'></span>");
-
-    echo("<$h2>Options</$h2>");
-    echo("<label>Eating time:<input type='time' name='eat-time'></label>");
-    echo(" &nbsp; ");
-    echo("<label>Oven type:<select name='oven-type'>");
-    echo("<option value='C' selected>&deg;C</option>");
-    echo("<option value='Cfan'>&deg;C fan oven</option>");
-    echo("<option value='F'>&deg;F</option>");
-    echo("<option value='gas'>gas oven</option>");
-    echo("<option value='desc'>a descriptive oven</option>");
-    echo("</select></label>");
-    echo(" &nbsp; ");
-    echo("<label>Format:<select name='format'>");
-    echo("<option value='table' selected>table</option>");
-    echo("<option value='gantt'>Gantt chart</option>");
-    echo("</select></label>");
-    echo("<br /><br /><input name='make' value='Make timetable' type='submit'>");
-    echo("</form>");
-
-    echo("<script type='text/javascript' src='planner.js'></script>");
 }
+    echo("
+<div id='xmas-edit'>
+    <$h2>Options</$h2>
+    <table class='xmas-input-table'>
+    <tr><td>Eating time:</td><td><input type='time' id='xmas-eat-time' value='13:00' onchange='updateTimetable()'></td></tr>
+    <tr><td>Oven type:</td><td><select id='xmas-oven-type' onchange='updateTimetable()'>
+    <option value='C' selected>&deg;C</option>
+    <option value='Cfan'>&deg;C fan oven</option>
+    <option value='F'>&deg;F</option>
+    <option value='gas'>gas oven</option>
+    <option value='desc'>a descriptive oven</option>
+    </select></td></tr>
+    <tr><td>Format:</td><td><select id='xmas-format' onchange='updateTimetable()'>
+    <option value='table' selected>table</option>
+    <option value='gantt'>Gantt chart</option>
+    </select></td></tr>
+    <tr><td>Event name:</td><td><input id='xmas-event' value='Christmas' onchange='updateTimetable()'></td></tr>
+    </table>
+
+    <$h2>Meat</$h2>
+    <span id='meatinputs1'></span>
+    <button onclick='return addMeat()' type='button'>+</button>
+    <br /><span id='meatticks'></span>
+
+    <$h2>Vegetarian</$h2>
+    <span id='nonmeatinputs1'></span>
+    <button onclick='return addNonMeat()' type='button'>+</button>
+
+    <$h2>Vegetables</$h2>
+    <span id='veginputs'></span>
+
+    <$h2>Other</$h2>
+    <span id='otherinputs'></span>
+</div>
+
+<div id='xmas-timetable-area'>
+</div>
+
+<script type='text/javascript' src='planner.js'></script>");
 ?>
