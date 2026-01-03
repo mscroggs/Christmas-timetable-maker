@@ -409,8 +409,9 @@ function updateTimetable() {
     var format = document.getElementById("xmas-format").value;
     var timetable = "";
     var [times, gantt] = generate_times();
+    if (gantt.length == 0) {
     /* ----------------------------- LIST OF TASKS ---------------------------- */
-    if (format == "table") {
+    } else if (format == "table") {
         timetable = "<h2>Timetable</h2>";
         timetable += "<table class='xmas-timetable'>";
         timetable += "<thead><td>Time</td><td>Activity</td></thead>";
