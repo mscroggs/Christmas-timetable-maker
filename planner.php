@@ -41,7 +41,7 @@ label {
 <?php
 
     echo("
-<div id='xmas-edit do-not-print'>
+<div id='xmas-edit' class='do-not-print'>
     <$h2>Options</$h2>
     <table class='xmas-input-table'>
     <tr><td>Eating time:</td><td><input type='time' id='xmas-eat-time' value='13:00' onchange='updateTimetable()'></td></tr>
