@@ -77,8 +77,8 @@ function markup_recipe($recipe){
     return $out;
 }
 
-if(isset($_GET['what']) && file_exists("recipes/".$_GET['what'].".html")){
-    $recipe = file_get_contents("recipes/".$_GET['what'].".html");
+if(isset($_GET['what']) && file_exists($recipe_dir."/".$_GET['what'].".html")){
+    $recipe = file_get_contents($recipe_dir."/".$_GET['what'].".html");
     echo(markup_recipe($recipe));
 } else {
     echo("Recipe not found");

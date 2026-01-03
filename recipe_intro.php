@@ -1,5 +1,9 @@
 <?php
 
+if(!isset($recipe_dir)) {
+    $recipe_dir = "recipes";
+}
+
 function between_tags($text, $tag){
     $out = explode("<".$tag.">",$text);
     if(count($out)==1){return "";}

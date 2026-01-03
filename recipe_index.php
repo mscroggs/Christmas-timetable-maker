@@ -2,12 +2,7 @@
 
 include("recipe_intro.php");
 
-if(!isset($recipe_dir)) {
-    $recipe_dir = "recipes";
-}
-
 echo("<ul>");
-
 
 foreach(scandir($recipe_dir."/") as $file){
     if(substr($file,-5,5) == ".html"){
