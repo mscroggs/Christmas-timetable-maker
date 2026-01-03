@@ -10,6 +10,9 @@ table.xmas-timetable td {border-bottom:2px solid gray;padding:10px}
     margin-top:50px;
 }
 
+table.xmas-input-table {
+    margin: auto;
+}
 table.xmas-input-table,
 table.xmas-input-table tr,
 table.xmas-input-table td {
