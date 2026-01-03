@@ -11,11 +11,23 @@ function oz($n){
 function C($n){
     return $n[1]."&deg;C";
 }
+function tsp($n){
+    return $n[1]." tsp";
+}
+function tbsp($n){
+    return $n[1]." tbsp";
+}
+function h_tbsp($n){
+    return $n[1]." heaped tbsp";
+}
 
 function add_units($txt){
-    $txt = preg_replace_callback("/<g>([0-9]+)<\/g>/","g",$txt);
-    $txt = preg_replace_callback("/<oz>([0-9]+)<\/oz>/","oz",$txt);
-    $txt = preg_replace_callback("/<C>([0-9]+)<\/C>/","C",$txt);
+    $txt = preg_replace_callback("/<g>([0-9]+\.?[0-9]?)<\/g>/","g",$txt);
+    $txt = preg_replace_callback("/<oz>([0-9]+\.?[0-9]?)<\/oz>/","oz",$txt);
+    $txt = preg_replace_callback("/<C>([0-9]+\.?[0-9]?)<\/C>/","C",$txt);
+    $txt = preg_replace_callback("/<tsp>([0-9]+\.?[0-9]?)<\/tsp>/","tsp",$txt);
+    $txt = preg_replace_callback("/<tbsp>([0-9]+\.?[0-9]?)<\/tbsp>/","tbsp",$txt);
+    $txt = preg_replace_callback("/<tbsp heaped>([0-9]+\.?[0-9]?)<\/tbsp>/","h_tbsp",$txt);
     return $txt;
 }
 
