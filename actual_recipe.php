@@ -50,6 +50,21 @@ function markup_recipe($recipe){
         $out.="<img src='/recipes/pictures/".$img."' style='float:right;margin-right:15px'>";
     }
     $out .= "<$h1>".between_tags($recipe,"h")."</$h1>";
+    $tags = explode(",", between_tags($fc,"labels"));
+    $started = false;
+    if(in_array("vegetarian", $tags)){
+        if($started){$out.=" ";} else {$out.="<$h1>";$started=true;}
+        $out.="<span style='color:#00A300' title='vegetarian'>v</span>";
+    }
+    if(in_array("vegan", $tags)){
+        if($started){$out.=" ";} else {$out.="<$h1>";$started=true;}
+        $out.="<span style='color:#00A300' title='vegan'>vg</span>";
+    }
+    if(in_array("alcohol", $tags)){
+        if($started){$out.=" ";} else {$out.="<$h1>";$started=true;}
+        $out.="<span style='color:#FF0000' title='contains alcohol'>18</span>";
+    }
+    if($started){$out.="</$h1>"}
     $source = between_tags($recipe,"source");
     if($source!=""){
         $book = between_tags($source,"book");
