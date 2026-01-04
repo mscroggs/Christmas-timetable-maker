@@ -40,7 +40,14 @@ label {
 
 <?php
 
-    echo("
+if(!isset($h1)) {
+    $h1 = "h1";
+}
+if(!isset($h2)) {
+    $h2 = "h2";
+}
+
+echo("
 <div id='xmas-edit' class='do-not-print'>
     <$h2>Options</$h2>
     <table class='xmas-input-table'>
@@ -74,11 +81,7 @@ label {
     <$h2>Other</$h2>
     <span id='otherinputs'></span>
 </div>
-
 ");
 ?>
-
-<div id='xmas-timetable-area'>
-</div>
-
+<div id='xmas-timetable-area'></div>
 <script type='text/javascript' src='planner.js'></script>

@@ -3,6 +3,12 @@
 if(!isset($recipe_dir)) {
     $recipe_dir = "recipes";
 }
+if(!isset($h1)) {
+    $h1 = "h1";
+}
+if(!isset($h2)) {
+    $h2 = "h2";
+}
 
 function between_tags($text, $tag){
     $out = explode("<".$tag.">",$text);
