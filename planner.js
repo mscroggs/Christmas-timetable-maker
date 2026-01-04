@@ -40,12 +40,16 @@ function show_non_info(n){
     if(v == "bread"){
         document.getElementById("xmas-nonmeatinfo"+n).innerHTML = "<a href='http://oxmas.xyz/recipe.php?what=koulibiaca' target='new'>click here for recipe</a>"
     }
+    if(v == "wreath"){
+        document.getElementById("xmas-nonmeatinfo"+n).innerHTML = "<a href='http://oxmas.xyz/recipe.php?what=wreath' target='new'>click here for recipe</a>"
+    }
 }
 
 function makeNonMeat(n){
     out = "<select id='xmas-nonmeatt"+n+"' onchange='show_non_info("+n+");updateTimetable()'>"
     out += "<option value='' selected></option>"
     out += "<option value='bread'>Christmas Koulibiaca</option>"
+    out += "<option value='wreath'>Christmas Butternut Wreath</option>"
     out += "</select><span id='xmas-nonmeatinfo"+n+"' style='margin-left:5px'></span>"
     return out
 }
@@ -300,6 +304,20 @@ function generate_times() {
             gantt[gantt.length] = [
                 [180,50,70, "Make koulibiaca"],
                 [60, 60,0, "Koulibiaca in oven"]
+            ];
+        }
+        if(t=="wreath") {
+            times[times.length] = [false, 120, "Chop butternut squash"];
+            times[times.length] = [false, 100, "Roast butternut squash"];
+            times[times.length] = [false, 55, "Make stuffing for wreath"];
+            times[times.length] = [false, 45, "Make wreath"];
+            times[times.length] = [true, 30, "Bake wreath"];
+            gantt[gantt.length] = [
+                [140,10,30, "Chop butternut squash"],
+                [130,45,25, "Roast butternut squash"],
+                [85,10,15, "Make stuffing"],
+                [75,15,30, "Make wreath"],
+                [30,30,0, "Bake wreath"]
             ];
         }
     }
