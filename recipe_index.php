@@ -26,7 +26,7 @@ foreach(scandir($recipe_dir."/") as $file){
     }
 }
 
-if(len($recipes["main"]) > 0) {
+if(count($recipes["main"]) > 0) {
     echo("<$h2>Main courses</$h2>");
     echo("<ul>");
     foreach($recipes["main"] as $r) {
@@ -35,7 +35,7 @@ if(len($recipes["main"]) > 0) {
     echo("</ul>");
 }
 
-if(len($recipes["pudding"]) > 0) {
+if(count($recipes["pudding"]) > 0) {
     echo("<$h2>Puddings</$h2>");
     echo("<ul>");
     foreach($recipes["pudding"] as $r) {
