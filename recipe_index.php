@@ -22,7 +22,7 @@ foreach(scandir($recipe_dir."/") as $file){
         if(in_array("alcohol", $tags)){
             $r.=" <span style='color:#FF0000' title='contains alcohol'>18</span>";
         }
-        $recipes[$type][] = "<a href='/recipe.php?what=".substr($file,0,-5)."'>".between_tags($fc,"h")."</a>";
+        $recipes[$type][] = $r;
     }
 }
 

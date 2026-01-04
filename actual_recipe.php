@@ -50,7 +50,7 @@ function markup_recipe($recipe){
         $out.="<img src='/recipes/pictures/".$img."' style='float:right;margin-right:15px'>";
     }
     $out .= "<$h1>".between_tags($recipe,"h")."</$h1>";
-    $tags = explode(",", between_tags($fc,"labels"));
+    $tags = explode(",", between_tags($recipe,"labels"));
     $started = false;
     if(in_array("vegetarian", $tags)){
         if($started){$out.=" ";} else {$out.="<$h1>";$started=true;}
