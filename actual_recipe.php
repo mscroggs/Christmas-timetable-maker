@@ -2,6 +2,12 @@
 
 include("recipe_intro.php");
 
+function cm($n){
+    return $n[1]."cm";
+}
+function mm($n){
+    return $n[1]."mm";
+}
 function g($n){
     return $n[1]."g";
 }
