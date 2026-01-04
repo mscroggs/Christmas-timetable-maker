@@ -64,7 +64,7 @@ function markup_recipe($recipe){
         if($started){$out.=" ";} else {$out.="<$h1>";$started=true;}
         $out.="<span style='color:#FF0000' title='contains alcohol'>18</span>";
     }
-    if($started){$out.="</$h1>"}
+    if($started){$out.="</$h1>";}
     $source = between_tags($recipe,"source");
     if($source!=""){
         $book = between_tags($source,"book");
