@@ -22,6 +22,8 @@ function h_tbsp($n){
 }
 
 function add_units($txt){
+    $txt = preg_replace_callback("/<cm>([0-9]+\.?[0-9]?)<\/cm>/","cm",$txt);
+    $txt = preg_replace_callback("/<mm>([0-9]+\.?[0-9]?)<\/mm>/","mm",$txt);
     $txt = preg_replace_callback("/<g>([0-9]+\.?[0-9]?)<\/g>/","g",$txt);
     $txt = preg_replace_callback("/<oz>([0-9]+\.?[0-9]?)<\/oz>/","oz",$txt);
     $txt = preg_replace_callback("/<C>([0-9]+\.?[0-9]?)<\/C>/","C",$txt);
