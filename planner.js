@@ -133,7 +133,7 @@ function pad2(n) {
 function xmas_time(minutes_before) {
     var m = aim_minutes - minutes_before;
     var h = aim_hours;
-    if (m <= 0) {
+    if (m < 0) {
         n = -Math.floor(m / 60);
         h -= n;
         m += 60 * n;
